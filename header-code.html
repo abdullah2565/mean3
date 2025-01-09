@@ -1,0 +1,37 @@
+<label for="cars">Choose a car:</label>
+
+<select id="cityDropdown" class="city-dropdown">
+  <option value="">Select City</option>
+  <option value="city-Karachi">Karachi, Pakistan</option>
+  <option value="city-Multan">Multan, Pakistan</option>
+  <option value="city-Lahore">Lahore, Pakistan</option>
+  <option value="city-Islamabad">Islamabad, Pakistan</option>
+  <option value="city-Gujranwala">Gujranwala</option>
+  <option value="city-Peshawar">Peshawar</option>
+  <option value="city-Hyderabad">Hyderabad</option>
+  <option value="city-Quetta">Quetta</option>
+  <option value="city-Sialkot">Sialkot</option>
+  <option value="city-Bahawalpur">Bahawalpur</option>
+  <option value="country-USA">USA</option>
+  <option value="country-UK">UK</option>
+</select>
+<script>
+  const cityDropdown = document.getElementById('cityDropdown');
+  const CITY_KEY = 'selectedCity'; // Key to store city in local storage
+
+  // Set the selected city on page load if available
+  document.addEventListener('DOMContentLoaded', function () {
+    const savedCity = localStorage.getItem(CITY_KEY);
+    if (savedCity) {
+      cityDropdown.value = savedCity; // Set saved city in the dropdown
+    }
+  });
+
+  cityDropdown.addEventListener('change', function (e) {
+    const selectedCity = e.target.value;
+    if (selectedCity) {
+      // Save the selected city to local storage
+      localStorage.setItem(CITY_KEY, selectedCity);
+    }
+  });
+</script>

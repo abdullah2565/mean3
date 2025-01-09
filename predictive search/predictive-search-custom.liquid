@@ -1,0 +1,17 @@
+{%- if predictive_search.performed -%}
+    <div class="products-grid column-{{ settings.search_product_per_row }} disable-srollbar text-left">
+        {%- for product in predictive_search.resources.products -%}
+            <div class="product{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--slide-in{% endif %}"{% if settings.banner_animation == 'effect_fade_up' %} style="--animation-order: {{ forloop.index }};"{% endif %}>
+                {% render 'product-grid-layout',
+                    product_card_product: product,
+                    portrait_aspect_ratio: '125',
+                    serial: forloop.index,
+                    sectionId: sectionId,
+                    media_size: image_ratio,
+                    hasCountdown: hasCountdown,
+                    loading: true
+                %}
+            </div>
+        {%- endfor -%}
+      </div>  
+{%- endif -%}
